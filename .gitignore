@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments (uv)
+.venv/
+
+# Tool caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Environment / secrets
+.env
+.env.*
+
+# Models (downloaded at runtime, never committed)
+models/
+*.gguf
+*.onnx
+*.bin
+*.safetensors
+
+# Meeting data: recordings, transcripts, eval sets are private
+*.wav
+*.flac
+*.mp3
+*.ogg
+*.opus
+recordings/
+sessions/
+eval/data/
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
