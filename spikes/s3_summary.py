@@ -26,16 +26,26 @@ from s2_vram import (
     transcribe,
 )
 
-SYSTEM = "Jesteś asystentem spotkań. Piszesz zwięźle, po polsku."
-PROMPT = """Podsumuj poniższy transkrypt. Użyj dokładnie tych nagłówków Markdown:
+SYSTEM = "Jesteś asystentem spotkań. Piszesz po polsku, pełnymi zdaniami."
+PROMPT = """Podsumuj poniższy transkrypt rozmowy. Użyj dokładnie tych nagłówków:
 
 ## Podsumowanie
-## Decyzje
-## Action items
-## Otwarte pytania
+2–3 akapity pełnymi zdaniami: o czym była rozmowa i jakie były główne wątki.
 
-W „Action items” podaj: kto, co, do kiedy. Opieraj się tylko na transkrypcie.
-Jeśli w transkrypcie czegoś nie ma, napisz „brak”. Niczego nie zmyślaj.
+## Decyzje
+Tylko ustalenia podjęte przez uczestników w trakcie tej rozmowy. Do każdego
+dodaj dosłowny cytat z transkryptu w cudzysłowie.
+
+## Action items
+Tylko zadania do wykonania po rozmowie: kto, co, do kiedy. Do każdego dodaj
+dosłowny cytat z transkryptu w cudzysłowie.
+
+## Otwarte pytania
+Tylko pytania, które padły w rozmowie i zostały bez odpowiedzi.
+
+Zasady: opieraj się tylko na transkrypcie. Jeśli sekcja nie ma treści, wpisz
+w niej jedno słowo: brak. Nie używaj nawiasów kwadratowych ani wypełniaczy.
+Niczego nie zmyślaj.
 
 Transkrypt:
 """
