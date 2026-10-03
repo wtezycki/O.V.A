@@ -9,8 +9,16 @@ requires-python = ">=3.11"
 license = "MIT"
 readme = "README.md"
 dependencies = [
+    "faster-whisper>=1.2.1",
     "numpy>=2.4.6",
     "soundcard>=0.4.6",
+]
+
+[project.optional-dependencies]
+cuda = [
+    "nvidia-cublas-cu12>=12.9.2.10",
+    "nvidia-cuda-runtime-cu12>=12.9.79",
+    "nvidia-cudnn-cu12>=9,<10",
 ]
 
 [build-system]

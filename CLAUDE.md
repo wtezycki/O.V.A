@@ -12,6 +12,7 @@ Plans and decisions live in the Obsidian vault `/home/wiktor/C/Vaults/toro.ai`:
 
 ```bash
 uv sync                    # install dependencies
+uv sync --extra cuda       # + CUDA 12 libs from pip (cuBLAS, cuDNN, runtime) for GPU runs
 uv run pytest              # tests
 uv run ruff check          # lint
 uv run ruff format         # format
