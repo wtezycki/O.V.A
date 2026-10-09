@@ -4,7 +4,44 @@
 
 O.V.A (On-Device Voice Assistant) listens to your online meetings (Google Meet, Teams, Zoom, or anything else that plays sound on your computer). It produces a live transcript, tells speakers apart, and writes structured notes with decisions and action items. It does not join the call as a bot, needs no integration with the meeting platform, and never sends audio or text to the cloud.
 
-> **Status:** early development. The product plan is complete; implementation starts with the core audio and transcription pipeline. See [Roadmap](#roadmap).
+> **Status:** early development. Working today: `ova record --from-wav` replays a recording through voice activity detection and Whisper, and writes a JSONL and Markdown transcript. Live capture, AI notes, and the desktop window are next. See [Roadmap](#roadmap).
+
+## Benchmarks
+
+Measured on a laptop **RTX 2060 (6 GB VRAM)**, the minimum supported GPU. Scripts: [`spikes/s2_vram.py`](spikes/s2_vram.py) and [`spikes/s3_summary.py`](spikes/s3_summary.py).
+
+### Speech-to-text and LLM on one 6 GB GPU
+
+Whisper `large-v3-turbo` (faster-whisper, `int8_float16`) transcribes while `llama-server` summarises with Qwen3-4B (Q4_K_M, 8k context, `q8_0` KV cache).
+
+| Metric | Result |
+|---|---|
+| Whisper real-time factor, alone | **0.054** (about 18× faster than real time) |
+| Whisper real-time factor, LLM generating at the same time | **0.157** (about 6× faster than real time) |
+| LLM generation, Whisper transcribing at the same time | 37–59 tokens/s |
+| Peak VRAM, both models plus the desktop | **5098 MiB** of 5729 MiB usable |
+| Whisper VRAM | 1080 MiB loaded, 1285 MiB peak |
+| LLM VRAM at 8k context | 3220 MiB |
+| LLM VRAM at 16k context | 3870 MiB; Whisper then runs out of memory |
+
+Real-time factor is processing time divided by audio length, so lower is faster.
+
+### Bielik vs. Qwen for Polish meeting notes
+
+Same Polish transcript (13,940 characters), same prompt, Q4_K_M, 8k context, each model alone on the GPU.
+
+| | Qwen3-4B-Instruct-2507 | Bielik-4.5B-v3.0-Instruct |
+|---|---|---|
+| Prompt tokens for the same Polish text | 5030 | **3752** (25% fewer) |
+| Prompt processing | **1829 tokens/s** | 1433 tokens/s |
+| Generation | 64 tokens/s | 63 tokens/s |
+| Peak VRAM, LLM plus the desktop | 3806 MiB | 3796 MiB |
+| Polish grammar | Errors | Correct |
+| Invented decisions, first prompt → revised prompt | 4 → 5 | 2 → **0** |
+
+Bielik is the default model for the 6 GB profile. Its tokenizer is efficient only for Polish: on an English transcript it needs 31% more tokens than Qwen (4932 vs. 3754).
+
+These are single runs per model on podcast recordings that contain no real decisions. A test on real meetings is still to do.
 
 ---
 
