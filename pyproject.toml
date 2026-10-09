@@ -1,7 +1,7 @@
 [project]
-name = "toro"
+name = "ova"
 version = "0.0.0"
-description = "A private AI meeting assistant that runs entirely on your laptop."
+description = "O.V.A (On-Device Voice Assistant): a private AI meeting assistant that runs entirely on your laptop."
 authors = [
     { name = "Wiktor Tężycki", email = "wtezycki1@gmail.com" }
 ]

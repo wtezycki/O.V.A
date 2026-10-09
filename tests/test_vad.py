@@ -3,8 +3,8 @@ import wave
 import numpy as np
 import pytest
 
-from toro.audio import RATE, wav_blocks
-from toro.vad import FRAME, Segmenter, SileroVad
+from ova.audio import RATE, wav_blocks
+from ova.vad import FRAME, Segmenter, SileroVad
 
 SPEECH = np.ones(FRAME, dtype=np.float32)
 SILENCE = np.zeros(FRAME, dtype=np.float32)

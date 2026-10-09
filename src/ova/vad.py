@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from toro.audio import RATE
+from ova.audio import RATE
 
 FRAME = 512  # 32 ms, the frame size Silero VAD expects at 16 kHz
 CONTEXT = 64  # samples of the previous frame the model sees again
