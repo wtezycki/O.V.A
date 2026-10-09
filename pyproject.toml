@@ -14,6 +14,9 @@ dependencies = [
     "soundcard>=0.4.6",
 ]
 
+[project.scripts]
+ova = "ova.cli:main"
+
 [project.optional-dependencies]
 cuda = [
     "nvidia-cublas-cu12>=12.9.2.10",
