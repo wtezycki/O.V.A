@@ -33,6 +33,7 @@ models/
 *.ogg
 *.opus
 recordings/
+!tests/data/*.wav
 sessions/
 eval/data/
 

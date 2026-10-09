@@ -1,8 +1,8 @@
-# toro.ai
+# O.V.A
 
 **A private AI meeting assistant that runs entirely on your laptop.**
 
-toro.ai listens to your online meetings (Google Meet, Teams, Zoom, or anything else that plays sound on your computer). It produces a live transcript, tells speakers apart, and writes structured notes with decisions and action items. It does not join the call as a bot, needs no integration with the meeting platform, and never sends audio or text to the cloud.
+O.V.A (On-Device Voice Assistant) listens to your online meetings (Google Meet, Teams, Zoom, or anything else that plays sound on your computer). It produces a live transcript, tells speakers apart, and writes structured notes with decisions and action items. It does not join the call as a bot, needs no integration with the meeting platform, and never sends audio or text to the cloud.
 
 > **Status:** early development. The product plan is complete; implementation starts with the core audio and transcription pipeline. See [Roadmap](#roadmap).
 
@@ -18,7 +18,7 @@ Meetings produce decisions, but the decisions get lost.
 
 ## The solution
 
-toro.ai is a desktop app that each participant runs on their own machine.
+O.V.A is a desktop app that each participant runs on their own machine.
 
 - **No bot, no integration.** It captures your microphone and your computer's audio output, so it works with any meeting app, including phone bridges played through the laptop.
 - **Fully local.** Speech recognition, speaker separation, and summarisation all run on the laptop's GPU. Nothing leaves the device, so there is no data processing agreement to sign and no vendor to trust.
@@ -49,7 +49,7 @@ toro.ai is a desktop app that each participant runs on their own machine.
 
 All processing happens on your device. Audio, transcripts, and notes are stored locally in your user data directory and are never uploaded.
 
-Recording other people is subject to law (in the EU, GDPR). toro.ai shows a permanent recording indicator, and we recommend telling participants that you are taking AI-assisted notes. The assistant is designed to be discreet, not secret.
+Recording other people is subject to law (in the EU, GDPR). O.V.A shows a permanent recording indicator, and we recommend telling participants that you are taking AI-assisted notes. The assistant is designed to be discreet, not secret.
 
 ## Requirements
 
@@ -68,7 +68,7 @@ Machines without a GPU can run transcription on CPU at reduced quality, without 
 2. **AI notes.** Run a local language model for rolling notes and a structured end-of-meeting summary, including the user's own notes.
 3. **Speaker separation.** Tell remote participants apart live, with an exact re-labelling pass after the meeting.
 4. **Fact check.** Load your documents and flag statements that contradict them.
-5. **One-command install.** Model download on first run and a hardware check (`toro doctor`), so anyone can set it up in under 10 minutes.
+5. **One-command install.** Model download on first run and a hardware check (`ova doctor`), so anyone can set it up in under 10 minutes.
 
 ## License
 

@@ -624,6 +624,47 @@ wheels = [
 ]
 
 [[package]]
+name = "ova"
+version = "0.0.0"
+source = { editable = "." }
+dependencies = [
+    { name = "faster-whisper" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.5.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "soundcard" },
+]
+
+[package.optional-dependencies]
+cuda = [
+    { name = "nvidia-cublas-cu12" },
+    { name = "nvidia-cuda-runtime-cu12" },
+    { name = "nvidia-cudnn-cu12" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "pytest" },
+    { name = "ruff" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "faster-whisper", specifier = ">=1.2.1" },
+    { name = "numpy", specifier = ">=2.4.6" },
+    { name = "nvidia-cublas-cu12", marker = "extra == 'cuda'", specifier = ">=12.9.2.10" },
+    { name = "nvidia-cuda-runtime-cu12", marker = "extra == 'cuda'", specifier = ">=12.9.79" },
+    { name = "nvidia-cudnn-cu12", marker = "extra == 'cuda'", specifier = ">=9,<10" },
+    { name = "soundcard", specifier = ">=0.4.6" },
+]
+provides-extras = ["cuda"]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "pytest", specifier = ">=9.1.1" },
+    { name = "ruff", specifier = ">=0.16.10" },
+]
+
+[[package]]
 name = "packaging"
 version = "26.3"
 source = { registry = "https://pypi.org/simple" }
@@ -809,47 +850,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/f3/1f/c79a01f671a49728ebb0b61f7ff9ea45663b66cab40bc0858e9859b25c16/tokenizers-0.23.2-cp310-abi3-win32.whl", hash = "sha256:debf978920d93ba9c219bd67cc4bbfaf912c9039e41e7a28b91ec15e3728c95a", size = 2592809, upload-time = "2026-09-03T08:55:48.02Z" },
     { url = "https://files.pythonhosted.org/packages/db/f7/0a69ac6b82dbccf3f71add938a161c497952749294b8dd6dfe03a819dc40/tokenizers-0.23.2-cp310-abi3-win_amd64.whl", hash = "sha256:2e96f5699d5249c9c64aa8412e044f727aae3a4098cf830f9901ec1afc361cde", size = 2863236, upload-time = "2026-09-03T08:55:46.193Z" },
     { url = "https://files.pythonhosted.org/packages/d7/b0/dee84cb44175be1b4c35bd2f770727494e78f0bb38e571a623ade94dbebb/tokenizers-0.23.2-cp310-abi3-win_arm64.whl", hash = "sha256:e49c394456dd9985787fec76132438ba3fb8911f857b1bf3d40119f9292d41aa", size = 2729352, upload-time = "2026-09-03T08:55:44.345Z" },
-]
-
-[[package]]
-name = "toro"
-version = "0.0.0"
-source = { editable = "." }
-dependencies = [
-    { name = "faster-whisper" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "numpy", version = "2.5.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
-    { name = "soundcard" },
-]
-
-[package.optional-dependencies]
-cuda = [
-    { name = "nvidia-cublas-cu12" },
-    { name = "nvidia-cuda-runtime-cu12" },
-    { name = "nvidia-cudnn-cu12" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "pytest" },
-    { name = "ruff" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "faster-whisper", specifier = ">=1.2.1" },
-    { name = "numpy", specifier = ">=2.4.6" },
-    { name = "nvidia-cublas-cu12", marker = "extra == 'cuda'", specifier = ">=12.9.2.10" },
-    { name = "nvidia-cuda-runtime-cu12", marker = "extra == 'cuda'", specifier = ">=12.9.79" },
-    { name = "nvidia-cudnn-cu12", marker = "extra == 'cuda'", specifier = ">=9,<10" },
-    { name = "soundcard", specifier = ">=0.4.6" },
-]
-provides-extras = ["cuda"]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "pytest", specifier = ">=9.1.1" },
-    { name = "ruff", specifier = ">=0.16.10" },
 ]
 
 [[package]]

@@ -1,5 +1,5 @@
-import toro
+import ova
 
 
 def test_version_is_set():
-    assert toro.__version__
+    assert ova.__version__

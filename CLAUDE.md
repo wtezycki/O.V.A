@@ -1,6 +1,6 @@
-# toro.ai
+# O.V.A
 
-Private, on-device meeting assistant: live transcript, speaker separation, and AI notes on a Linux laptop (NVIDIA 6–8 GB). See `README.md` for the product description.
+O.V.A (On-Device Voice Assistant): a private, on-device meeting assistant: live transcript, speaker separation, and AI notes on a Linux laptop (NVIDIA 6–8 GB). See `README.md` for the product description.
 
 ## Design notes
 
@@ -22,7 +22,7 @@ CI (`.github/workflows/ci.yml`) runs `ruff check`, `ruff format --check`, and `p
 
 ## Layout
 
-- `src/toro/`: application package.
+- `src/ova/`: application package.
 - `tests/`: pytest tests. Tests must run without a GPU or a microphone.
 
 ## Rules
